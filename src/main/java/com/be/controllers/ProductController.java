@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
-import com.be.models.User;
-import com.be.services.UserService;
+import com.be.models.Product;
+import com.be.services.ProductService;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/product")
+public class ProductController {
     @Autowired
-    private UserService userService;
+    private ProductService productService;
 
     @GetMapping()
-    public ResponseEntity<User> deleteUser(@RequestBody String id) {
-        return userService.findUserById(id);
+    public ResponseEntity<Product> deleteProduct(@RequestBody String id) {
+        return productService.findProductById(id);
     }
 }

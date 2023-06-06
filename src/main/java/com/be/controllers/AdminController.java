@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
-import com.be.models.User;
-import com.be.services.UserService;
+import com.be.models.Admin;
+import com.be.services.AdminService;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/admin")
+public class AdminController {
     @Autowired
-    private UserService userService;
+    private AdminService adminService;
 
     @GetMapping()
-    public ResponseEntity<User> deleteUser(@RequestBody String id) {
-        return userService.findUserById(id);
+    public ResponseEntity<Admin> deleteAdmin(@RequestBody String id) {
+        return adminService.findAdminById(id);
     }
 }

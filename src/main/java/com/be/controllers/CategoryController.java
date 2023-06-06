@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
-import com.be.models.User;
-import com.be.services.UserService;
+import com.be.models.Category;
+import com.be.services.CategoryService;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/category")
+public class CategoryController {
     @Autowired
-    private UserService userService;
+    private CategoryService categoryService;
 
     @GetMapping()
-    public ResponseEntity<User> deleteUser(@RequestBody String id) {
-        return userService.findUserById(id);
+    public ResponseEntity<Category> deleteCategory(@RequestBody String id) {
+        return categoryService.findCategoryById(id);
     }
 }
