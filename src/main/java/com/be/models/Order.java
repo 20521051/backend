@@ -8,27 +8,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
 import java.util.List;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "users")
-public class User {
+@Document(collection = "orders")
+public class Order {
     @Id
     private String id;
-    private String name;
-    private String email;
-    private String username;
-    private String password;
-    private String avatar;
-    private Date birthday;
-    private String googleId;
-    private List<String> addresses;
-    private List<String> wishlist;
-    private List<String> cart;
+    private String userId;
+    private String addressId;
+    private List<String> orderItems;
+    private double total;
+    private String status;
+    private String shortId;
+    private String paymentMethod;
 
     // Constructors, getters, and setters
 

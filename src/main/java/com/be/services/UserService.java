@@ -19,7 +19,7 @@ public class UserService {
             return new ResponseEntity<User>(user, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("error: " + e.getMessage());
-            return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
     }
 
