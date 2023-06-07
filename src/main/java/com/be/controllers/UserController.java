@@ -21,7 +21,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping()
-    public ResponseEntity<User> deleteUser(@RequestBody String id) {
+    public ResponseEntity<User> getUser(@RequestBody String id) {
         return userService.findUserById(id);
     }
 }

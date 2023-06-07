@@ -21,7 +21,7 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping()
-    public ResponseEntity<Order> deleteOrder(@RequestBody String id) {
+    public ResponseEntity<Order> getOrder(@RequestBody String id) {
         return orderService.findOrderById(id);
     }
 }

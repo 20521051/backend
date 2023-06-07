@@ -21,7 +21,7 @@ public class AdminController {
     private AdminService adminService;
 
     @GetMapping()
-    public ResponseEntity<Admin> deleteAdmin(@RequestBody String id) {
+    public ResponseEntity<Admin> getAdmin(@RequestBody String id) {
         return adminService.findAdminById(id);
     }
 }

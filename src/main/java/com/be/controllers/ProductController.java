@@ -21,7 +21,12 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping()
-    public ResponseEntity<Product> deleteProduct(@RequestBody String id) {
+    public ResponseEntity<Product> getProduct(@RequestBody String id) {
         return productService.findProductById(id);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<String> getThumbnail(@RequestBody String id) {
+        return productService.getThumbnail(id);
     }
 }

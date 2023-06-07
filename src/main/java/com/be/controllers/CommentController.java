@@ -21,7 +21,7 @@ public class CommentController {
     private CommentService commentService;
 
     @GetMapping()
-    public ResponseEntity<Comment> deleteComment(@RequestBody String id) {
+    public ResponseEntity<Comment> dgetComment(@RequestBody String id) {
         return commentService.findCommentById(id);
     }
 }
