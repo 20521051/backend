@@ -15,7 +15,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    private CloudinaryService cloudinaryService;
+    private CloudinaryService cloudinaryService = new CloudinaryService();
 
     public ResponseEntity<Product> findProductById(String id) {
         try {
@@ -30,7 +30,7 @@ public class ProductService {
     public ResponseEntity<String> getThumbnail(String id) {
         try {
             Product product = productRepository.findById(id).orElseThrow(() -> new Error("Product not found."));
-            String result = cloudinaryService.getUrl(product.getThumbnail());
+            String result = cloudinaryService.getUrl(product.getThumbnail(), "products");
 
             return new ResponseEntity<String>(result, HttpStatus.OK);
         } catch (Exception e) {

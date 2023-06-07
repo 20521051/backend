@@ -2,6 +2,8 @@ package com.be.services;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -10,15 +12,18 @@ import java.util.Map;
 public class CloudinaryService {
     private Cloudinary cloudinary;
 
-    private String cloudName = "dweyqefdv";
-    private String apiKey = "886292824638157";
-    private String apiSecret = "g6vGm2exJecdQz5U__vujoitkDM";
+    public CloudinaryService(Cloudinary cloudinary) {
+        this.cloudinary = cloudinary;
+    }
 
     public CloudinaryService() {
         this.cloudinary = new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", cloudName,
-                "api_key", apiKey,
-                "api_secret", apiSecret,
+                "cloud_name",
+                "dweyqefdv",
+                "api_key",
+                "886292824638157",
+                "api_secret",
+                "g6vGm2exJecdQz5U__vujoitkDM",
                 "secure", true));
     }
 
@@ -28,7 +33,8 @@ public class CloudinaryService {
     }
 
     public void delete(String publicId) throws IOException {
-        cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+        String[] parts = publicId.split("/");
+        cloudinary.uploader().destroy(parts[1], ObjectUtils.emptyMap());
     }
 
     public void update(String publicId, MultipartFile file) throws IOException {
@@ -36,7 +42,13 @@ public class CloudinaryService {
         upload(file);
     }
 
-    public String getUrl(String publicId) {
-        return cloudinary.url().generate(publicId);
+    public String getUrl(String publicId, String folderName) {
+        String[] parts = publicId.split("/");
+        String temp = cloudinary.url().generate(parts[1]);
+        int lastIndex = temp.lastIndexOf("/");
+        if (lastIndex != -1) {
+            return temp.substring(0, lastIndex + 1) + folderName + "/" + temp.substring(lastIndex + 1);
+        }
+        return "";
     }
 }

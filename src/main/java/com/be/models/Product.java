@@ -36,4 +36,8 @@ public class Product {
     private Date updatedAt;
 
     // Constructors, getters, and setters
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
 }
