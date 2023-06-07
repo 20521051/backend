@@ -21,7 +21,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping()
-    public ResponseEntity<Category> deleteCategory(@RequestBody String id) {
+    public ResponseEntity<Category> getCategory(@RequestBody String id) {
         return categoryService.findCategoryById(id);
     }
 }

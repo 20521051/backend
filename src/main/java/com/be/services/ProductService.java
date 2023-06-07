@@ -8,10 +8,14 @@ import org.springframework.stereotype.Service;
 import com.be.models.Product;
 import com.be.repositories.ProductRepository;
 
+import com.be.services.CloudinaryService;
+
 @Service
 public class ProductService {
     @Autowired
     private ProductRepository productRepository;
+
+    private CloudinaryService cloudinaryService = new CloudinaryService();
 
     public ResponseEntity<Product> findProductById(String id) {
         try {
@@ -20,6 +24,18 @@ public class ProductService {
         } catch (Exception e) {
             System.out.println("error: " + e.getMessage());
             return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public ResponseEntity<String> getThumbnail(String id) {
+        try {
+            Product product = productRepository.findById(id).orElseThrow(() -> new Error("Product not found."));
+            String result = cloudinaryService.getUrl(product.getThumbnail(), "products");
+
+            return new ResponseEntity<String>(result, HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println("error: " + e.getMessage());
+            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
         }
     }
 }

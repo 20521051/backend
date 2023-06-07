@@ -21,7 +21,7 @@ public class AddressController {
     private AddressService addressService;
 
     @GetMapping()
-    public ResponseEntity<Address> deleteAddress(@RequestBody String id) {
+    public ResponseEntity<Address> getAddress(@RequestBody String id) {
         return addressService.findAddressById(id);
     }
 }
