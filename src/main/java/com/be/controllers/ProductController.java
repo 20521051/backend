@@ -15,7 +15,7 @@ import com.be.services.ProductService;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -25,7 +25,7 @@ public class ProductController {
         return productService.findProductById(id);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping()
     public ResponseEntity<String> getThumbnail(@RequestBody String id) {
         return productService.getThumbnail(id);
     }

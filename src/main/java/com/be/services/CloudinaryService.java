@@ -49,6 +49,6 @@ public class CloudinaryService {
         if (lastIndex != -1) {
             return temp.substring(0, lastIndex + 1) + folderName + "/" + temp.substring(lastIndex + 1);
         }
-        return "";
+        return "https://res.cloudinary.com/cake-shop/image/upload/v1662910949/default-image_n5nxby.jpg";
     }
 }
